@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableEurekaClient
+// @EnableCircuitBreaker
 @RestController
 public class TemperatureServiceApplication {
 

@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  config:
+    container_name: config-server
+    build:
+      context: config/
+      dockerfile: Dockerfile
+    image: config-server:latest
+    # or use expose and links
+    ports:
+      - "8081:80"
+    networks:
+      - spring-cloud-network
+  discovery:
+    container_name: discovery-server
+    build:
+      context: discovery/
+      dockerfile: Dockerfile
+    depends_on:
+      - config
+    image: discovery-server:latest
+    ports:
+      - "8082:80"
+    networks:
+      - spring-cloud-network
+
+networks:
+    spring-cloud-network:
